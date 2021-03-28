@@ -6,6 +6,9 @@
 
 module.exports = {
   /* Your site config here */
+  siteMetadata: {
+    title: `tomoyat.dev`
+  },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
