@@ -1,0 +1,22 @@
+:root {
+    --main-bg-color: #fef9f1;
+    --main-text-color: #433f3a;
+    --main-header-text-color: #433f3a;
+    --main-blue-color: #5aa7de;
+    --header-link-color: #543a19;
+    --dark-blue-color: #004170;
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--main-header-text-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-blue-color);
+}
