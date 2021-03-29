@@ -15,13 +15,16 @@
   },
   "dependencies": {
     "gatsby": "^3.1.2",
+    "gatsby-plugin-typography": "^3.1.0",
     "gatsby-remark-prismjs": "^4.1.0",
     "gatsby-source-filesystem": "^3.1.0",
     "gatsby-transformer-remark": "^3.1.0",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.23.0",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-typography": "^0.16.19",
+    "typography": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "2.2.1"
