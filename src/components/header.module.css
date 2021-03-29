@@ -1,0 +1,35 @@
+.header {
+    padding: 10px 40px 45px;
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    grid-template-rows: 35px;
+    grid-template-areas: "logo nav";
+}
+
+.logo {
+    grid-area: logo;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+.logo-link {
+    font-size: 1.3rem;
+    color: var(--main-header-text-color);
+    position: absolute;
+    bottom: 0;
+}
+
+.nav {
+    grid-area: nav;
+    height: 100%;
+    display: block;
+    position: relative;
+ }
+
+.nav-link {
+    color: var(--header-link-color);
+    vertical-align: text-bottom;
+    position: absolute;
+    bottom: 0;
+}
