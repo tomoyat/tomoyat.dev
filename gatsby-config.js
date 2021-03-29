@@ -10,7 +10,6 @@ module.exports = {
     title: `tomoyat.dev`
   },
   plugins: [
-    `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
