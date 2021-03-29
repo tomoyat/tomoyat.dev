@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "tomoyat.dev",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "A web site",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "gatsby": "^3.1.2",
+    "gatsby-remark-prismjs": "^4.1.0",
     "gatsby-source-filesystem": "^3.1.0",
     "gatsby-transformer-remark": "^3.1.0",
+    "prismjs": "^1.23.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
