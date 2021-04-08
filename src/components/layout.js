@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <div>
       <Header />
-      <div style={{ margin: `3rem auto`, maxWidth: 960 }}>
+      <div style={{ margin: `2rem auto`, maxWidth: 960 }}>
       {children}
       </div>
     </div>
