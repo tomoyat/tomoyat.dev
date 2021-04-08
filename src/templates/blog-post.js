@@ -8,6 +8,7 @@ export default function BlogPost({ data }) {
     <Layout>
       <div style={{ margin: `3rem auto`, maxWidth: 960 }}>
         <h1>{post.frontmatter.title}</h1>
+        <p>{post.frontmatter.date}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
@@ -19,7 +20,8 @@ export const query = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
-        title
+        title,
+        date(formatString: "YYYY/MM/DD")
       }
     }
   }
