@@ -1,10 +1,10 @@
 :root {
-    --main-bg-color: #fef9f1;
-    --main-text-color: #433f3a;
-    --main-header-text-color: #433f3a;
-    --main-blue-color: #5aa7de;
-    --header-link-color: #543a19;
-    --dark-blue-color: #004170;
+    --base-color: #00708e;
+    --main-bg-color: #f6fafd;
+    --main-text-color: #636e71;
+    --main-header-text-color: #354145;
+    --main-green-color: #53b366;
+    --header-link-color: #354145;
 }
 
 body {
@@ -18,5 +18,5 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
     text-decoration: none;
-    color: var(--main-blue-color);
+    color: var(--main-green-color);
 }
