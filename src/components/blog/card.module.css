@@ -1,0 +1,8 @@
+.card {
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.card .date {
+    margin-bottom: 0.5rem;
+}
