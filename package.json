@@ -14,15 +14,15 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "gatsby": "^3.1.2",
-    "gatsby-plugin-typography": "^3.1.0",
-    "gatsby-remark-prismjs": "^4.1.0",
-    "gatsby-source-filesystem": "^3.1.0",
-    "gatsby-transformer-remark": "^3.1.0",
+    "gatsby": "^3.3.1",
+    "gatsby-plugin-typography": "^3.3.0",
+    "gatsby-remark-prismjs": "^5.0.0",
+    "gatsby-source-filesystem": "^3.3.0",
+    "gatsby-transformer-remark": "^4.0.0",
     "normalize.css": "^8.0.1",
     "prismjs": "^1.23.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-typography": "^0.16.19",
     "typography": "^0.16.19"
   },
