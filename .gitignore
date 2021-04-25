@@ -70,3 +70,6 @@ yarn-error.log
 
 # ide
 .idea/
+
+# blog test text
+src/contents/blog/test*
