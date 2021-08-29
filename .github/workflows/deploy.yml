@@ -25,6 +25,6 @@ jobs:
       - name: Deploy  # S3にデプロイ
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_AWS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_AWS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_AWS_SECRET }}
         run: |
           aws s3 sync --region ap-northeast-1 --delete --exact-timestamps public s3://tomoyat.dev
