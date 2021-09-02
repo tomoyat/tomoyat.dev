@@ -34,6 +34,7 @@ const typography = new Typography({
     p: {
       textAlign: 'justify',
       wordBreak: 'break-all',
+      lineHeight: 1.6
     },
   })
 })
