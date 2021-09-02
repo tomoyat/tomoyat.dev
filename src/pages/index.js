@@ -6,7 +6,7 @@ import Card from "../components/blog/card"
 export default function Home({ data }) {
   return (
     <Layout>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
+      {data.allMdx.edges.map(({ node }) => (
         <div key={node.id}>
           <Card slug={node.fields.slug}
                 title={node.frontmatter.title}
@@ -21,7 +21,7 @@ export default function Home({ data }) {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       edges {
         node {

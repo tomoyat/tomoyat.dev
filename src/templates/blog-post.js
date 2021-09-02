@@ -1,15 +1,16 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 export default function BlogPost({ data }) {
-  const post = data.markdownRemark
+  const post = data.mdx
   return (
     <Layout>
       <div style={{ margin: `3rem auto`, maxWidth: 960 }}>
         <h1>{post.frontmatter.title}</h1>
         <p>{post.frontmatter.date}</p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <MDXRenderer>{post.body}</MDXRenderer>
       </div>
     </Layout>
   )
@@ -17,8 +18,8 @@ export default function BlogPost({ data }) {
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    mdx(fields: { slug: { eq: $slug } }) {
+      body
       frontmatter {
         title,
         date(formatString: "YYYY/MM/DD")
