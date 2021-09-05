@@ -2,7 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { MDXProvider } from "@mdx-js/react"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { Code } from "../components/blog/code"
+
+const components = {
+  code: Code
+}
 
 export default function BlogPost({ data }) {
   const post = data.mdx
@@ -16,7 +22,9 @@ export default function BlogPost({ data }) {
       <div style={{ margin: `3rem auto`, maxWidth: 960 }}>
         <h1>{post.frontmatter.title}</h1>
         <p>{post.frontmatter.date}</p>
-        <MDXRenderer>{post.body}</MDXRenderer>
+        <MDXProvider components={components}>
+          <MDXRenderer>{post.body}</MDXRenderer>
+        </MDXProvider>
       </div>
     </Layout>
   )
