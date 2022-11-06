@@ -11,10 +11,7 @@ const config = {
     preprocess: [
         preprocess({postcss: true,}),
         mdsvex({
-            extensions: ['.md'],
-            layout: {
-                _: "./src/routes/posts/[slug]/layout.svelte"
-            }
+            extensions: ['.md']
         })
     ],
 
