@@ -1,5 +1,13 @@
 <script>
-  import "../app.css";
+    import "../app.css";
 </script>
 
-<slot />
+<div class="max-w-4xl w-full mx-auto mt-0">
+    <div class="mx-4">
+        <header class="h-20 mt-4">
+            <a href="/" class="text-base text-navy-dark">blog.tomoyat.dev</a>
+        </header>
+        <hr class="border-blue border-t">
+        <slot/>
+    </div>
+</div>
