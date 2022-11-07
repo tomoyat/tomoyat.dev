@@ -1,8 +1,12 @@
+import {parse, format} from "date-fns"
+import ja from "date-fns/locale/ja"
 import type {SvelteComponent} from "svelte";
 
 export type Post = {
     slug: string;
     title: string;
+    publishedAt: Date;
+    publishedAtString: string;
     component: SvelteComponent;
 };
 
@@ -24,10 +28,14 @@ export const posts: Post[] = Object.entries(modules).map(([filepath, module]) =>
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     const svelteComponent = module.default;
-    console.log("---------------")
+    const publishedAt = parse(metadata.date, "yyyy-MM-dd HH:mm:ss", new Date(2000, 0, 1), {
+        locale: ja
+    })
     return {
         slug: slug,
         component: svelteComponent,
         title: metadata.title,
+        publishedAt: publishedAt,
+        publishedAtString: format(publishedAt, "yyyy-MM-dd", {locale: ja}),
     };
 });

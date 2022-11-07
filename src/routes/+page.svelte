@@ -1,13 +1,11 @@
 <script lang="ts">
-    import type {PageData} from './$types';
+    import type {Post} from '$lib/posts'
 
-    export let data: PageData
-    console.log("route +page svelte")
+    export let data;
+    const posts: Post[] = data.posts;
+    posts.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
-
-<p>---------------------</p>
-
-<a href="/posts/{data.posts[0].slug}">linl</a>
+{#each posts as post}
+    <a href="/posts/{post.slug}">{post.title}</a>
+{/each}
