@@ -1,13 +1,7 @@
-import type {PageLoad} from "../../../../.svelte-kit/types/src/routes/$types";
-
-export const load: PageLoad = async ({params}) => {
-    const post = await import(`../../../posts/${params.slug}.md`)
-
-    const { title, date } = post.metadata
-    const content = post.default
-
+import {fetchPage} from '$lib/posts'
+export const load = async ({params}) => {
+    const post = await fetchPage(params.slug);
     return {
-        content: content,
-        title: title,
-    }
+        post: post
+    };
 }

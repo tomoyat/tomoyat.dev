@@ -1,8 +1,7 @@
-import type {PageLoad} from './$types';
 import {posts} from '$lib/posts'
 
-export const load: PageLoad = async ({params}) => {
+export const load = async ({params}) => {
     return {
-        posts
+        posts: posts
     };
 }
