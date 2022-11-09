@@ -15,7 +15,23 @@ module.exports = {
         DEFAULT: '#19448E'
       },
     },
-    extend: {},
+    extend: {
+      typography: ({theme}) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-headings': theme('colors.navy.dark'),
+            '--tw-prose-body': theme('colors.navy.DEFAULT'),
+            '--tw-prose-links': theme('colors.blue.DEFAULT'),
+            h1: { fontWeight: '500'},
+            h2: { fontWeight: '400'},
+            h3: { fontWeight: '400'},
+            h4: { fontWeight: '400'},
+            p: { fontWeight: '400'},
+            a: { fontWeight: '400'},
+          }
+        }
+      })
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
