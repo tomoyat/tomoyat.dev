@@ -1,5 +1,5 @@
 import {parse, format} from "date-fns"
-import ja from "date-fns/locale/ja"
+import ja from "date-fns/locale/ja/index"
 import type {SvelteComponent} from "svelte";
 
 export type Post = {
