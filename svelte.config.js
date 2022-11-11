@@ -19,7 +19,8 @@ const config = {
 		adapter: adapter(),
         prerender: {
             entries: ['*']
-        }
+        },
+        trailingSlash: "always"
 	}
 };
 
