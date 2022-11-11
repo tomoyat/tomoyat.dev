@@ -32,3 +32,10 @@ jobs:
 
       - name: build
         run: npm run build
+
+      - name: Deploy  # S3にデプロイ
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.DEPLOY_AWS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.DEPLOY_AWS_SECRET }}
+        run: |
+          python .github/workflows/deploy.py
