@@ -31,13 +31,13 @@ def object_content_type(path):
         return 'image/jpeg'
     if path.suffix in ['.png']:
         return 'image/png'
-    if path.suffix in ['svg']:
+    if path.suffix in ['.svg']:
         return 'image/svg+xml'
-    if path.suffix in ['js']:
+    if path.suffix in ['.js']:
         return 'text/javascript'
-    if path.suffix in ['css']:
+    if path.suffix in ['.css']:
         return 'text/css'
-    if path.suffix in ['json', 'map']:
+    if path.suffix in ['.json', '.map']:
         return 'application/json'
 
     return 'application/octet-stream'
