@@ -22,6 +22,7 @@ module.exports = {
             '--tw-prose-headings': theme('colors.navy.dark'),
             '--tw-prose-body': theme('colors.navy.DEFAULT'),
             '--tw-prose-links': theme('colors.blue.DEFAULT'),
+            '--tw-prose-bullets': theme('colors.navy.DEFAULT'),
             h1: { fontWeight: '500'},
             h2: { fontWeight: '400'},
             h3: { fontWeight: '400'},
