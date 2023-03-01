@@ -8,9 +8,11 @@ export type Post = {
     publishedAt: Date;
     publishedAtString: string;
     component: SvelteComponent;
+    image: string | null;
+    description: string | null;
 };
 
-const modules = import.meta.globEager("/src/posts/*.md");
+const modules = import.meta.glob("/src/posts/*.md", {eager: true});
 
 function basename(path: string): string {
     return path.replace(/.*\//, '');
@@ -36,6 +38,8 @@ function formatPost(slug: string, module: any): Post {
         title: metadata.title,
         publishedAt: publishedAt,
         publishedAtString: format(publishedAt, "yyyy-MM-dd", {locale: ja}),
+        image: metadata.image ? metadata.image : null,
+        description: metadata.description ? metadata.description : null,
     };
 }
 

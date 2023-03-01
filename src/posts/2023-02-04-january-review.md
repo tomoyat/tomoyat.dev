@@ -1,9 +1,12 @@
----
-title: "1月の振り返り"
-date: "2023-02-04 14:00:00"
----
-<script>
-  import slum_dunk from '$lib/assets/posts/2023-02-04-january-review/slam_dunk.jpeg';
+<script context="module">
+    import slum_dunk from '$lib/assets/posts/2023-02-04-january-review/slam_dunk.jpeg';
+    const ogImage = new URL('$lib/assets/posts/2023-02-04-january-review/slam_dunk.jpeg', import.meta.url).href;
+    export let metadata = {
+        title: "1月の振り返り",
+        date: "2023-02-04 14:00:00",
+        image: ogImage,
+        description: "1月は年末にコロナになったせいで正月でも家から出れないというスタートだった。"
+    };
 </script>
 
 1月は年末にコロナになったせいで正月でも家から出れないというスタートだった。
