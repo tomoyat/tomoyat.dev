@@ -14,9 +14,6 @@
     {#if post.description}
         <meta property="og:description" content="{post.description}">
     {/if}
-    {#if post.image}
-        <meta property="og:image" content="{post.image}"/>
-    {/if}
 </svelte:head>
 
 <article class="mt-12">

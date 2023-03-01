@@ -8,7 +8,6 @@ export type Post = {
     publishedAt: Date;
     publishedAtString: string;
     component: SvelteComponent;
-    image: string | null;
     description: string | null;
 };
 
@@ -38,7 +37,6 @@ function formatPost(slug: string, module: any): Post {
         title: metadata.title,
         publishedAt: publishedAt,
         publishedAtString: format(publishedAt, "yyyy-MM-dd", {locale: ja}),
-        image: metadata.image ? metadata.image : null,
         description: metadata.description ? metadata.description : null,
     };
 }
