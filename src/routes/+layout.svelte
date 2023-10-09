@@ -9,5 +9,6 @@
         </header>
         <hr class="border-blue border-t">
         <slot/>
+        <hr class="mt-4 border-blue border-t">
     </div>
 </div>
