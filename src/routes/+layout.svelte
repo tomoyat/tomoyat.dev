@@ -1,5 +1,6 @@
 <script>
     import "../app.css";
+    export const trailingSlash = 'always';
 </script>
 
 <div class="max-w-4xl w-full mx-auto mt-0">
