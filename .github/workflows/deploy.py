@@ -39,8 +39,8 @@ def object_content_type(path):
         return 'text/css'
     if path.suffix in ['.json', '.map']:
         return 'application/json'
-   if path.suffix in ['.txt']:
-           return 'text/plain'
+    if path.suffix in ['.txt']:
+        return 'text/plain'
 
     return 'application/octet-stream'
 
