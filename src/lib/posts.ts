@@ -8,6 +8,7 @@ export type Post = {
     publishedAt: Date;
     publishedAtString: string;
     component: SvelteComponent;
+    type: "diary" | "tech"
     description: string | null;
 };
 
@@ -36,6 +37,7 @@ function formatPost(slug: string, module: any): Post {
         component: svelteComponent,
         title: metadata.title,
         publishedAt: publishedAt,
+        type: metadata.type == "diary" ? "diary" : "tech",
         publishedAtString: format(publishedAt, "yyyy-MM-dd", {locale: ja}),
         description: metadata.description ? metadata.description : null,
     };

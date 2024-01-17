@@ -3,7 +3,8 @@
     export let metadata = {
         title: "1月の振り返り",
         date: "2023-02-04 14:00:00",
-        description: "1月は年末にコロナになったせいで正月でも家から出れないというスタートだった。"
+        description: "1月は年末にコロナになったせいで正月でも家から出れないというスタートだった。",
+        type: "diary"
     };
 </script>
 
