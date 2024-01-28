@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     colors: {
       'moon': {
-        DEFAULT: '#EAF4FC'
+        DEFAULT: '#EAF4FC',
+        dark: '#bec6cc',
       },
       'navy': {
         light: '#2A4073',
@@ -23,6 +24,7 @@ module.exports = {
             '--tw-prose-body': theme('colors.navy.DEFAULT'),
             '--tw-prose-links': theme('colors.blue.DEFAULT'),
             '--tw-prose-bullets': theme('colors.navy.DEFAULT'),
+            '--tw-prose-hr': theme('colors.moon.dark'),
             h1: { fontWeight: '500'},
             h2: { fontWeight: '400'},
             h3: { fontWeight: '400'},
