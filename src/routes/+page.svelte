@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Post } from "$lib/posts";
+  import ArticleListBlock from "$lib/components/ArticleListBlock.svelte";
 
   export let data;
   let posts: Post[] = data.posts;
@@ -9,9 +10,6 @@
 
 <div class="pt-4">
   {#each posts as post}
-    <div class="mt-8">
-      <a href="/posts/{post.slug}"><h2 class="text-xl text-navy-dark">{post.title}</h2></a>
-      <div class="mt-1 text-sm text-navy-light">{post.publishedAtString}</div>
-    </div>
+    <ArticleListBlock linkUrl="/posts/{post.slug}" post={post} />
   {/each}
 </div>
