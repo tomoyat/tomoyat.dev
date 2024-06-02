@@ -12,14 +12,15 @@ export type Post = {
     description: string | null;
 };
 
-const modules = import.meta.glob("/src/posts/*.md", {eager: true});
+const modules = import.meta.glob(["/src/posts/*.md", "/src/posts/*.svx"], {eager: true});
 
 function basename(path: string): string {
     return path.replace(/.*\//, '');
 }
 
-function removeMd(path: string): string {
-    return path.replace(/\.md/, '')
+function removeExt(path: string): string {
+    const tmpPath = path.replace(/\.md/, '');
+    return tmpPath.replace(/\.svx/, '');
 }
 
 function formatPost(slug: string, module: any): Post {
@@ -44,11 +45,16 @@ function formatPost(slug: string, module: any): Post {
 }
 
 export const posts: Post[] = Object.entries(modules).map(([filepath, module]) => {
-    const slug = removeMd(basename(filepath));
+    const slug = removeExt(basename(filepath));
     return formatPost(slug, module);
 });
 
 export const fetchPage: (slug: string) => Promise<Post> = async (slug: string) => {
-    const post = await import(`../posts/${slug}.md`);
-    return formatPost(slug, post);
+    try {
+        const post = await import(`../posts/${slug}.md`);
+        return formatPost(slug, post);
+    } catch (e) {
+        const post = await import(`../posts/${slug}.svx`);
+        return formatPost(slug, post);
+    }
 }
