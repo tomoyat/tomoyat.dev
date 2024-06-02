@@ -1,5 +1,7 @@
 <script>
     import "../app.css";
+    import Footer from '$lib/components/Footer.svelte';
+
 </script>
 
 <div class="max-w-4xl w-full mx-auto mt-0">
@@ -10,5 +12,6 @@
         <hr class="border-blue border-t">
         <slot/>
         <hr class="mt-10 border-blue border-t">
+        <Footer />
     </div>
 </div>
