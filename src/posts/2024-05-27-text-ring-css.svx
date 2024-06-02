@@ -1,0 +1,278 @@
+<script lang="ts" context="module">
+	import calc from '$lib/assets/posts/2024-06-02-text-ring-css/ring-text-css.png';
+	import TextRing from '$lib/components/TextRing.svelte';
+
+	export let metadata = {
+		title: 'CSSでテキストをリング状にするメモ',
+		date: '2024-05-27 17:00:00'
+	};
+
+	let ringText: string = 'Happy Hacking! ';
+	let charSize: number = 1.4;
+</script>
+
+テキストをリング状に並べたかったのでそのためのメモ
+
+## 親要素の中央に要素を配置する
+
+親要素の中においたdivを何も考えず表示すると以下のようになる
+
+```html
+<div class="box">
+	<div class="child-box">
+	</div>
+</div>
+
+<div class="box">
+	<div class="child-box">
+	</div>
+</div>
+
+<style>
+    .box {
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        background-color: #B48EAD;
+    }
+
+    .child-box {
+        width: 20px;
+        height: 20px;
+        background-color: #88C0D0;
+    }
+</style>
+```
+
+<div class="box">
+	<div class="child-box">
+	</div>
+</div>
+
+親要素の左上に、子供要素の左上が重なるように配置される。そこで親要素に`position: relative;`、子供の要素に`position: absolute;`をつけることで、左上の位置を調整できるようになる。
+そしてそこで`top: 50%;left: 50%;`を指定することで子供要素の左上が親要素の中心から始まるようになる
+
+```html
+<div class="box" style="position: relative">
+	<div class="child-box" style="position: absolute; top: 50%; left: 50%;">
+	</div>
+</div>
+```
+
+<div class="box" style="position: relative">
+	<div class="child-box" style="position: absolute; top: 50%; left: 50%;">
+	</div>
+</div>
+
+この状態で子供の要素をtransformを使って、左に50%、上に50%移動させると子供の要素の中心が親の要素の中心と同じになる
+
+```html
+<div class="box" style="position: relative">
+	<div class="child-box" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+	</div>
+</div>
+```
+
+<div class="box" style="position: relative">
+	<div class="child-box" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+	</div>
+</div>
+
+## テキストを回転させる
+
+上記の容量でまずはテキストをそれぞれ親要素の中央に並べる
+
+
+```html
+<div class="box" style="position: relative">
+	<span class="center" style="transform: translate(-50%, -50%);">a</span>
+	<span class="center" style="transform: translate(-50%, -50%);">b</span>
+</div>
+```
+
+```css
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+```
+
+<div class="box" style="position: relative">
+	<span class="center">a</span>
+	<span class="center">b</span>
+</div>
+
+そこからまず文字を移動させる
+
+```html
+<div class="box" style="position: relative">
+	<span class="center" style="transform: translateY(calc(5 * -1ch)) translate(-50%, -50%) ">a</span>
+	<span class="center">b</span>
+	<span class="center">g</span>
+</div>
+```
+
+<div class="box" style="position: relative">
+	<span class="center" style="transform: translateY(calc(5 * -1ch)) translate(-50%, -50%) ">a</span>
+	<span class="center">b</span>
+	<span class="center">g</span>
+</div>
+
+次に回転させる
+
+この時にtransformに指定するやつの順番が大事。まず真ん中にして、角度を変えて、その変わった角度から上方向に移動させる
+
+```html
+<div class="box" style="position: relative">
+	<span class="center" style="transform: translate(-50%, -50%) translateY(calc(5 * -1ch)) ">a</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(60deg) translateY(calc(5 * -1ch)) ">b</span>
+	<span class="center">g</span>
+</div>
+```
+
+<div class="box" style="position: relative">
+	<span class="center" style="transform: translate(-50%, -50%) translateY(calc(5 * -1ch)) ">a</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(60deg) translateY(calc(5 * -1ch)) ">b</span>
+	<span class="center">g</span>
+</div>
+これを繰り返すと円になる
+
+```html
+<div class="box" style="position: relative">
+	<span class="center" style="transform: translate(-50%, -50%) translateY(calc(5 * -1ch)) ">a</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(60deg) translateY(calc(5 * -1ch)) ">b</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(120deg) translateY(calc(5 * -1ch)) ">c</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(180deg) translateY(calc(5 * -1ch)) ">d</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(240deg) translateY(calc(5 * -1ch)) ">e</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(300deg) translateY(calc(5 * -1ch)) ">f</span>
+	<span class="center">g</span>
+</div>
+```
+
+<div class="box" style="position: relative">
+	<span class="center" style="transform: translate(-50%, -50%) translateY(calc(5 * -1ch)) ">a</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(60deg) translateY(calc(5 * -1ch)) ">b</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(120deg) translateY(calc(5 * -1ch)) ">c</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(180deg) translateY(calc(5 * -1ch)) ">d</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(240deg) translateY(calc(5 * -1ch)) ">e</span>
+	<span class="center" style="transform: translate(-50%, -50%) rotate(300deg) translateY(calc(5 * -1ch)) ">f</span>
+	<span class="center">g</span>
+</div>
+
+## 半径を自動で設定する
+
+translateYで文字の位置を中心から外側に移動してるけど、文字列の長さによって移動させる長さを変えないといけない。
+この長さを自動で決めたい。6Pチーズみたいに円の中に三角形を並べて、以下のように計算すると文字数と文字幅で計算できそう
+
+<div class="w-full">
+	<img alt="計算式" src={calc} />
+</div>
+
+これをhtmlにすると以下みたいな感じで、ぴったりの円になる
+
+```html
+<div class="box" style="position: relative">
+	<span class="center" style="transform: translate(-50%, -50%) translateY(calc(1/ ( 2 * sin(30deg)) * -1ch))">a</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(60deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch)) ">b</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(120deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch)) ">c</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(180deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch))">d</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(240deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch))">e</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(300deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch))">f</span>
+</div>
+```
+
+
+<div class="box" style="position: relative">
+	<span class="center" style="transform: translate(-50%, -50%) translateY(calc(1/ ( 2 * sin(30deg)) * -1ch))">a</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(60deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch)) ">b</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(120deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch)) ">c</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(180deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch))">d</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(240deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch))">e</span>
+	<span class="center"
+				style="transform: translate(-50%, -50%) rotate(300deg) translateY(calc(1/ (2 * sin(30deg)) * -1ch))">f</span>
+</div>
+
+## パラメータ化する
+
+svelteで上記のやつをパラメータで渡せるようにするとこんな感じ
+
+```svelte
+<script lang="ts">
+	let text: string = 'Happy Hacking !  ';
+	let charSize: number = 1.5;
+
+	function radius(): number {
+		return charSize / (2.0 * Math.sin(Math.PI / text.length));
+	}
+</script>
+
+<div>
+	<span class="text-ring">
+		{#each text as char, index}
+			<span class="text-ring-ch"
+						style="--index: {index}; --total: {text.length}; --radius: {radius()}">
+				{char}
+			</span>
+		{/each}
+	</span>
+</div>
+
+<style>
+    .text-ring {
+        position: relative;
+        font-family: monospace;
+    }
+
+    .text-ring-ch {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(calc(360deg / var(--total) * var(--index))) translateY(calc(var(--radius) * -1ch))
+    }
+</style>
+```
+
+
+<div class="box" style="position: relative">
+	<div style="position: absolute; top: 50%; left: 50%;">
+		<TextRing text="{ringText}" charSize="{charSize}" />
+	</div>
+</div>
+
+
+<style>
+    .box {
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        background-color: #B48EAD;
+    }
+
+    .child-box {
+        width: 20px;
+        height: 20px;
+        background-color: #88C0D0;
+    }
+
+    .box-relative {
+        position: relative;
+    }
+
+    .center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
