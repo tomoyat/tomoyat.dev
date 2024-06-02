@@ -3,8 +3,9 @@
 	import TextRing from '$lib/components/TextRing.svelte';
 
 	export let metadata = {
-		title: 'CSSでテキストをリング状にするメモ',
-		date: '2024-05-27 17:00:00'
+		title: 'CSSでテキストをリング状にする',
+		date: '2024-05-27 17:00:00',
+		description: "CSSを使ってtextをリング上に並べる方法をまとめた",
 	};
 
 	let ringText: string = 'Happy Hacking! ';
