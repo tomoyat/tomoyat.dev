@@ -1,8 +1,12 @@
 <script lang="ts">
   import type { Post } from "$lib/posts";
 
-  export let linkUrl: string;
-  export let post: Post;
+  interface Props {
+    linkUrl: string;
+    post: Post;
+  }
+
+  let { linkUrl, post }: Props = $props();
 </script>
 
 <div class="mt-8 border-l-2 border-blue px-4 py-2">

@@ -2,8 +2,8 @@
   import type { Post } from "$lib/posts";
   import ArticleListBlock from "$lib/components/ArticleListBlock.svelte";
 
-  export let data;
-  let posts: Post[] = data.posts;
+  let { data } = $props();
+  let posts: Post[] = $state(data.posts);
   posts = posts.filter((p) => p.type == "diary");
   posts.sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
 </script>

@@ -1,6 +1,11 @@
-<script>
+<script lang="ts">
     import "../app.css";
     import Footer from '$lib/components/Footer.svelte';
+    interface Props {
+        children?: import('svelte').Snippet;
+    }
+
+    let { children }: Props = $props();
 
 </script>
 
@@ -10,7 +15,7 @@
             <a href="/" class="text-base text-navy-dark">blog.tomoyat.dev</a>
         </header>
         <hr class="border-blue border-t">
-        <slot/>
+        {@render children?.()}
         <hr class="mt-10 border-blue border-t">
         <Footer />
     </div>

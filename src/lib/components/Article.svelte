@@ -1,7 +1,11 @@
 <script lang="ts">
 	import type {Post} from "$lib/posts";
 
-	export let post: Post;
+	interface Props {
+		post: Post;
+	}
+
+	let { post }: Props = $props();
 </script>
 
 <article class="mt-12">
@@ -10,6 +14,6 @@
 	<div class="prose mt-12 tracking-wider text-justify max-w-none prose-h1:text-2xl
 			prose-h2:text-xl prose-h2:underline prose-h2:decoration-blue prose-h3:text-lg
       prose-p:text-base prose-p:font-light prose-a:text-base prose-li:text-base prose-li:font-light">
-		<svelte:component this={post.component}/>
+		<post.component/>
 	</div>
 </article>

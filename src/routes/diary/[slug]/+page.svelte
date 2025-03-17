@@ -2,7 +2,7 @@
     import type {Post} from "$lib/posts";
     import Article from '$lib/components/Article.svelte';
 
-    export let data;
+    let { data } = $props();
     const post: Post = data.post;
     const slug: string = data.slug;
 </script>

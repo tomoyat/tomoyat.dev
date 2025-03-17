@@ -1,7 +1,11 @@
 <script lang="ts">
 
-	export let text: string = 'Happy Hacking !  ';
-	export let charSize: number = 1.5;
+	interface Props {
+		text?: string;
+		charSize?: number;
+	}
+
+	let { text = 'Happy Hacking !  ', charSize = 1.5 }: Props = $props();
 
 	function radius(): number {
 		return charSize / (2.0 * Math.sin(Math.PI / text.length));
